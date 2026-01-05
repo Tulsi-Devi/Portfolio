@@ -1,140 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tulsi Devi M </title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f2f5;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulsi Devi M | Interactive Slides</title>
 
-    header {
-      background-color: #4b0082;
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-    }
+<style>
+:root{
+  --primary:#6a11cb;
+  --secondary:#2575fc;
+  --accent:#ffcc70;
+  --glass:rgba(255,255,255,0.18);
+}
 
-    .profile-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid white;
-      margin-top: -90px;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins","Segoe UI",sans-serif;
+}
 
-    }
+body{
+  overflow:hidden;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+/* ===== SLIDES ===== */
+.slide{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  position:absolute;
+  left:100%;
+  top:0;
+  transition:all 0.8s ease-in-out;
+  padding:40px;
+  text-align:center;
+}
 
-    h2 {
-      color: #4b0082;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 10px;
-      margin-top: 40px;
-    }
+.slide.active{ left:0; }
+.slide.previous{ left:-100%; }
 
-    .contact a {
-      display: inline-block;
-      margin-right: 20px;
-      text-decoration: none;
-      color: #4b0082;
-    }
+/* ===== PROFILE ===== */
+.profile-pic{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  border:6px solid white;
+  object-fit:cover;
+  box-shadow:0 0 40px rgba(255,255,255,0.4);
+  animation:zoomFade 1.2s ease;
+}
 
-    .contact img {
-      vertical-align: middle;
-      width: 24px;
-      margin-right: 8px;
-    }
+/* ===== TEXT ===== */
+h1{ font-size:3rem; margin-top:20px; }
+h2{ font-size:2.3rem; margin-bottom:20px; }
 
-    .skills, .languages {
-      list-style: none;
-      padding: 0;
-    }
+p{
+  font-size:1.2rem;
+  max-width:850px;
+  line-height:1.7;
+  animation:slideUp 1s ease;
+}
 
-    .skills li, .languages li {
-      background: #e0e0e0;
-      padding: 10px;
-      margin-bottom: 5px;
-      border-radius: 6px;
-    }
-  </style>
+/* ===== TAGS ===== */
+.tag{
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  padding:14px 22px;
+  border-radius:30px;
+  margin:8px;
+  display:inline-block;
+  font-weight:500;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== CONTACT CARDS ===== */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:30px;
+  width:90%;
+  max-width:900px;
+}
+
+.contact-card{
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  border-radius:20px;
+  padding:25px;
+  text-decoration:none;
+  color:white;
+  transition:0.4s;
+  box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+.contact-card:hover{
+  transform:translateY(-12px) scale(1.05);
+  background:rgba(255,255,255,0.28);
+}
+
+.contact-card h3{
+  margin-bottom:10px;
+  color:var(--accent);
+}
+
+/* ===== CONTROLS ===== */
+.controls{
+  position:fixed;
+  bottom:25px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 40px;
+}
+
+button{
+  padding:14px 28px;
+  border:none;
+  border-radius:40px;
+  font-size:1rem;
+  font-weight:600;
+  background:var(--accent);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.15);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes zoomFade{
+  from{opacity:0; transform:scale(0.6);}
+  to{opacity:1; transform:scale(1);}
+}
+
+@keyframes slideUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Tulsi Devi M</h1>
-    <p>Aspiring AI Engineer | Tech Explorer | Lifelong Learner</p>
-  </header>
+<!-- SLIDE 1 -->
+<div class="slide active">
+  <img src="devi.jpg" class="profile-pic">
+  <h1>Tulsi Devi M</h1>
+  <p>Aspiring AI Engineer • Tech Explorer • Lifelong Learner</p>
+</div>
 
-  <div class="container" align="center">
-    <img src="devi.jpg" alt="Tulsi Devi" class="profile-pic">
+<!-- SLIDE 2 -->
+<div class="slide">
+  <h2>About Me</h2>
+  <p>
+    I am pursuing a <b>B.Tech in Artificial Intelligence and Data Science</b>
+    at <b>Kongunadu College of Engineering and Technology</b>.
+    I am passionate about building intelligent systems and exploring emerging AI technologies.
+  </p>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <h2>Projects</h2>
+  <p>
+    <b>TechMate AI</b><br>
+    Personalized AI professor assistant built using Streamlit, Gemini LLM,
+    ChromaDB, and Vector Embeddings.
+  </p>
+  <br>
+  <p>
+    <b>Ongoing Project:</b><br>
+    <b>InsurAI – Corporate Policy Automation and Intelligence System</b><br>
+    An AI-driven system to automate insurance policy management,
+    improve decision-making, and enhance customer experience.
+  </p>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <h2>Technical Skills</h2>
+  <div>
+    <span class="tag">Java</span>
+    <span class="tag">Python</span>
+    <span class="tag">HTML</span>
   </div>
+</div>
 
-  <div class="container">
-    <h2>About Me</h2>
-    <p>
-      Hi! I'm currently a student at <strong>Kongunadu College of Engineering and Technology</strong>, pursuing a <strong>B.Tech in Artificial Intelligence and Data Science</strong>.
-      I'm an enthusiastic learner with a deep curiosity for all things tech. I love exploring new technologies and enjoy getting hands-on with innovative tools,
-      frameworks, and real-world applications.
-    </p>
-    <p>
-      Whether it’s diving into data, building intelligent systems, or experimenting with the latest in AI trends, I’m always eager to expand my knowledge and skills.
-      I believe in <strong>learning by doing</strong> and thrive on turning ideas into action.
-    </p>
-    <p>
-      I’m passionate about <strong>continuous growth</strong> and excited about the endless possibilities that AI and data science offer in transforming the future.
-    </p>
-
-    <h2>Contact Info</h2>
-    <div class="contact">
-      <p>
-        <a href="https://wa.me/919487631775" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/> WhatsApp
-        </a>
-        <a href="https://instagram.com/tulsi_devi_m" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png"/> Instagram
-        </a>
-        <a href="mailto:tulsidevi7213@gmail.com">
-          <img src="https://img.icons8.com/color/48/000000/gmail-new.png"/> Email
-        </a>
-        <a>
-            <a href="https://github.com/Tulsi-Devi" target="_blank">
-                <img src="https://img.icons8.com/color/48/000000/github--v1.png"/> GitHub
-              </a>
-              
-      </p>
-    </div>
-
-    <h2>Projects & Hackathons</h2>
-    <p><strong>Offline Scholars</strong> – A project designed to support student learning in low-connectivity environments using AI-powered content recommendations and offline-first technology. Built using Python and HTML, with integrated data analytics modules.</p>
-    <p><strong>Hackathon Participation:</strong> Participated in college-level and inter-college hackathons focused on AI solutions, predictive modeling, and smart applications.</p>
-    <p><strong>TechMate AI: </strong>The TechMate AI Professor Personalized Agent is an innovative educational assistant espicially built for professor and it is built using Streamlit interface ,Gemini LLM, chromo DB, and vector Embedding. </p>
-    <h2>Technical Skills</h2>
-    <ul class="skills">
-      <li>Java</li>
-      <li>Python</li>
-      <li>HTML</li>
-    </ul>
-
-    <h2>Languages Known</h2>
-    <ul class="languages">
-      <li>English</li>
-      <li>Tamil</li>
-      <li>Telugu</li>
-      <li>Kannada</li>
-      <li>Hindi</li>
-    </ul>
+<!-- SLIDE 5 -->
+<div class="slide">
+  <h2>Languages Known</h2>
+  <div>
+    <span class="tag">English</span>
+    <span class="tag">Tamil</span>
+    <span class="tag">Telugu</span>
+    <span class="tag">Kannada</span>
+    <span class="tag">Hindi</span>
   </div>
+</div>
+
+<!-- SLIDE 6 (INTERACTIVE CONTACT) -->
+<div class="slide">
+  <h2>Contact Me</h2>
+
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:tulsidevi7213@gmail.com">
+      <h3>Email</h3>
+      <p>tulsidevi7213@gmail.com</p>
+    </a>
+
+    <a class="contact-card" href="https://github.com/Tulsi-Devi" target="_blank">
+      <h3>GitHub</h3>
+      <p>github.com/Tulsi-Devi</p>
+    </a>
+
+    <a class="contact-card" href="https://www.linkedin.com/" target="_blank">
+      <h3>LinkedIn</h3>
+      <p>Connect with me</p>
+    </a>
+
+    <a class="contact-card" href="https://wa.me/919487631775" target="_blank">
+      <h3>WhatsApp</h3>
+      <p>+91 94876 31775</p>
+    </a>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <button onclick="prevSlide()">◀ Prev</button>
+  <button onclick="nextSlide()">Next ▶</button>
+</div>
+
+<script>
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+function showSlide(i){
+  slides.forEach((slide,idx)=>{
+    slide.classList.remove("active","previous");
+    if(idx===i) slide.classList.add("active");
+    else if(idx<i) slide.classList.add("previous");
+  });
+}
+
+function nextSlide(){
+  if(index<slides.length-1){ index++; showSlide(index); }
+}
+
+function prevSlide(){
+  if(index>0){ index--; showSlide(index); }
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight") nextSlide();
+  if(e.key==="ArrowLeft") prevSlide();
+});
+</script>
 
 </body>
 </html>
