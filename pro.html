@@ -1,269 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tulsi Devi M | Interactive Slides</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tulsi Devi M | Portfolio</title>
 
-<style>
-:root{
-  --primary:#6a11cb;
-  --secondary:#2575fc;
-  --accent:#ffcc70;
-  --glass:rgba(255,255,255,0.18);
-}
+  <style>
+    :root {
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --accent: #ffcc70;
+      --dark: #1a1a2e;
+      --light: #f5f7ff;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Poppins","Segoe UI",sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+    }
 
-body{
-  overflow:hidden;
-}
+    body {
+      background: linear-gradient(135deg, #eef2ff, #fdfbff);
+      color: var(--dark);
+      scroll-behavior: smooth;
+    }
 
-/* ===== SLIDES ===== */
-.slide{
-  width:100vw;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:white;
-  position:absolute;
-  left:100%;
-  top:0;
-  transition:all 0.8s ease-in-out;
-  padding:40px;
-  text-align:center;
-}
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.slide.active{ left:0; }
-.slide.previous{ left:-100%; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      top: -80px;
+      left: -80px;
+    }
 
-/* ===== PROFILE ===== */
-.profile-pic{
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  border:6px solid white;
-  object-fit:cover;
-  box-shadow:0 0 40px rgba(255,255,255,0.4);
-  animation:zoomFade 1.2s ease;
-}
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      bottom: -70px;
+      right: -70px;
+    }
 
-/* ===== TEXT ===== */
-h1{ font-size:3rem; margin-top:20px; }
-h2{ font-size:2.3rem; margin-bottom:20px; }
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 6px solid white;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      animation: popIn 1.2s ease;
+    }
 
-p{
-  font-size:1.2rem;
-  max-width:850px;
-  line-height:1.7;
-  animation:slideUp 1s ease;
-}
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-top: 20px;
+      font-weight: 700;
+      animation: fadeUp 1s ease;
+    }
 
-/* ===== TAGS ===== */
-.tag{
-  background:var(--glass);
-  backdrop-filter:blur(12px);
-  padding:14px 22px;
-  border-radius:30px;
-  margin:8px;
-  display:inline-block;
-  font-weight:500;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 700px;
+      animation: fadeUp 1.4s ease;
+    }
 
-/* ===== CONTACT CARDS ===== */
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-  margin-top:30px;
-  width:90%;
-  max-width:900px;
-}
+    .scroll-btn {
+      margin-top: 30px;
+      padding: 14px 30px;
+      background: var(--accent);
+      border-radius: 30px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
 
-.contact-card{
-  background:var(--glass);
-  backdrop-filter:blur(14px);
-  border-radius:20px;
-  padding:25px;
-  text-decoration:none;
-  color:white;
-  transition:0.4s;
-  box-shadow:0 15px 35px rgba(0,0,0,0.3);
-}
+    .scroll-btn:hover {
+      transform: scale(1.1);
+      background: #ffd98e;
+    }
 
-.contact-card:hover{
-  transform:translateY(-12px) scale(1.05);
-  background:rgba(255,255,255,0.28);
-}
+    /* ===== SECTION STYLING ===== */
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-.contact-card h3{
-  margin-bottom:10px;
-  color:var(--accent);
-}
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: var(--primary);
+      position: relative;
+    }
 
-/* ===== CONTROLS ===== */
-.controls{
-  position:fixed;
-  bottom:25px;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:0 40px;
-}
+    .section-title::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 5px;
+    }
 
-button{
-  padding:14px 28px;
-  border:none;
-  border-radius:40px;
-  font-size:1rem;
-  font-weight:600;
-  background:var(--accent);
-  cursor:pointer;
-  transition:0.3s;
-}
+    /* ===== ABOUT CARD ===== */
+    .about-card {
+      background: white;
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: 0.4s;
+    }
 
-button:hover{
-  transform:scale(1.15);
-}
+    .about-card:hover {
+      transform: translateY(-10px);
+    }
 
-/* ===== ANIMATIONS ===== */
-@keyframes zoomFade{
-  from{opacity:0; transform:scale(0.6);}
-  to{opacity:1; transform:scale(1);}
-}
+    .about-card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
 
-@keyframes slideUp{
-  from{opacity:0; transform:translateY(40px);}
-  to{opacity:1; transform:translateY(0);}
-}
-</style>
+    /* ===== PROJECTS ===== */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 6px;
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px) scale(1.02);
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    /* ===== SKILLS ===== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skill {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      transform: scale(1.1);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      text-decoration: none;
+      color: var(--dark);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: 0.4s;
+      text-align: center;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-12px);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .contact-card h4 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .contact-card:hover h4 {
+      color: var(--accent);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- SLIDE 1 -->
-<div class="slide active">
-  <img src="devi.jpg" class="profile-pic">
-  <h1>Tulsi Devi M</h1>
-  <p>Aspiring AI Engineer • Tech Explorer • Lifelong Learner</p>
-</div>
-
-<!-- SLIDE 2 -->
-<div class="slide">
-  <h2>About Me</h2>
-  <p>
-    I am pursuing a <b>B.Tech in Artificial Intelligence and Data Science</b>
-    at <b>Kongunadu College of Engineering and Technology</b>.
-    I am passionate about building intelligent systems and exploring emerging AI technologies.
-  </p>
-</div>
-
-<!-- SLIDE 3 -->
-<div class="slide">
-  <h2>Projects</h2>
-  <p>
-    <b>TechMate AI</b><br>
-    Personalized AI professor assistant built using Streamlit, Gemini LLM,
-    ChromaDB, and Vector Embeddings.
-  </p>
-  <br>
-  <p>
-    <b>Ongoing Project:</b><br>
-    <b>InsurAI – Corporate Policy Automation and Intelligence System</b><br>
-    An AI-driven system to automate insurance policy management,
-    improve decision-making, and enhance customer experience.
-  </p>
-</div>
-
-<!-- SLIDE 4 -->
-<div class="slide">
-  <h2>Technical Skills</h2>
-  <div>
-    <span class="tag">Java</span>
-    <span class="tag">Python</span>
-    <span class="tag">HTML</span>
+  <!-- HERO -->
+  <div class="hero">
+    <img src="devi.jpg" alt="Tulsi Devi M" class="profile-pic" />
+    <h1>Tulsi Devi M</h1>
+    <p>Aspiring AI Engineer • B.Tech in Artificial Intelligence & Data Science • Tech Explorer</p>
+    <a href="#about" class="scroll-btn">Explore My Journey ↓</a>
   </div>
-</div>
 
-<!-- SLIDE 5 -->
-<div class="slide">
-  <h2>Languages Known</h2>
-  <div>
-    <span class="tag">English</span>
-    <span class="tag">Tamil</span>
-    <span class="tag">Telugu</span>
-    <span class="tag">Kannada</span>
-    <span class="tag">Hindi</span>
-  </div>
-</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-card">
+      <p>
+        I am currently pursuing a <strong>B.Tech in Artificial Intelligence and Data Science</strong>
+        at <strong>Kongunadu College of Engineering and Technology</strong>.
+        I am deeply passionate about technology, innovation, and building intelligent systems.
+      </p>
+      <br>
+      <p>
+        I enjoy exploring emerging AI trends, working on real-world projects, and constantly upgrading my skills.
+        My belief is simple: <strong>Learn by doing. Grow by building.</strong>
+      </p>
+    </div>
+  </section>
 
-<!-- SLIDE 6 (INTERACTIVE CONTACT) -->
-<div class="slide">
-  <h2>Contact Me</h2>
+  <!-- PROJECTS -->
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>TechMate AI</h3>
+        <p>
+          Personalized AI professor assistant built using Streamlit, Gemini LLM,
+          ChromaDB, and vector embeddings to support academic tasks.
+        </p>
+      </div>
 
-  <div class="contact-grid">
-    <a class="contact-card" href="mailto:tulsidevi7213@gmail.com">
-      <h3>Email</h3>
-      <p>tulsidevi7213@gmail.com</p>
-    </a>
+      <div class="project-card">
+        <h3>InsurAI</h3>
+        <p>
+          <strong>Corporate Policy Automation and Intelligence System</strong> – An AI-driven platform
+          to automate insurance policy workflows, improve decision-making, and enhance customer experience.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <a class="contact-card" href="https://github.com/Tulsi-Devi" target="_blank">
-      <h3>GitHub</h3>
-      <p>github.com/Tulsi-Devi</p>
-    </a>
+  <!-- SKILLS -->
+  <section>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills">
+      <div class="skill">Java</div>
+      <div class="skill">Python</div>
+      <div class="skill">HTML</div>
+    </div>
+  </section>
 
-    <a class="contact-card" href="https://www.linkedin.com/" target="_blank">
-      <h3>LinkedIn</h3>
-      <p>Connect with me</p>
-    </a>
+  <!-- CONTACT -->
+  <section>
+    <h2 class="section-title">Connect With Me</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:tulsidevi7213@gmail.com">
+        <h4>Email</h4>
+        <p>tulsidevi7213@gmail.com</p>
+      </a>
 
-    <a class="contact-card" href="https://wa.me/919487631775" target="_blank">
-      <h3>WhatsApp</h3>
-      <p>+91 94876 31775</p>
-    </a>
-  </div>
-</div>
+      <a class="contact-card" href="https://github.com/Tulsi-Devi" target="_blank">
+        <h4>GitHub</h4>
+        <p>github.com/Tulsi-Devi</p>
+      </a>
 
-<!-- CONTROLS -->
-<div class="controls">
-  <button onclick="prevSlide()">◀ Prev</button>
-  <button onclick="nextSlide()">Next ▶</button>
-</div>
+      <a class="contact-card" href="https://www.linkedin.com/" target="_blank">
+        <h4>LinkedIn</h4>
+        <p>View Profile</p>
+      </a>
 
-<script>
-let slides=document.querySelectorAll(".slide");
-let index=0;
+      <a class="contact-card" href="https://wa.me/919487631775" target="_blank">
+        <h4>WhatsApp</h4>
+        <p>+91 94876 31775</p>
+      </a>
+    </div>
+  </section>
 
-function showSlide(i){
-  slides.forEach((slide,idx)=>{
-    slide.classList.remove("active","previous");
-    if(idx===i) slide.classList.add("active");
-    else if(idx<i) slide.classList.add("previous");
-  });
-}
-
-function nextSlide(){
-  if(index<slides.length-1){ index++; showSlide(index); }
-}
-
-function prevSlide(){
-  if(index>0){ index--; showSlide(index); }
-}
-
-document.addEventListener("keydown",e=>{
-  if(e.key==="ArrowRight") nextSlide();
-  if(e.key==="ArrowLeft") prevSlide();
-});
-</script>
-
+  
 </body>
 </html>
+
